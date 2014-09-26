@@ -11,16 +11,16 @@ Next update the `app/config/cache.php` `memcached`. Example:
 'memcached' => array(
     'default' => 'session',
 
-    'session' => array(
+    'data1' => array(
         array('host' => '127.0.0.1', 'port' => 11211, 'weight' => 100),
         array('host' => '127.0.0.1', 'port' => 11212, 'weight' => 100)
     ),
 
-    'data' => array(
+    'data2' => array(
         array('host' => '127.0.0.1', 'port' => 11213, 'weight' => 100),
     ),
 
-    'other' => array(
+    'data3' => array(
         array('host' => '127.0.0.1', 'port' => 11214, 'weight' => 100),
     ),
 ),
