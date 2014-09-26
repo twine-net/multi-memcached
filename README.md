@@ -25,3 +25,13 @@ Next update the `app/config/cache.php` `memcached`. Example:
     ),
 ),
 ```
+
+## Example Usage
+
+```php
+Cache::connection('session')->get('somekey');
+
+// or you can omit the conection method to use the default connection.
+
+Cache::get('somekey');
+```
