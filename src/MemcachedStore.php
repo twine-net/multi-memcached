@@ -7,14 +7,14 @@ class MemcachedStore extends LaravelMemcachedStore
     /**
      * The Memcached manager instance.
      *
-     * @var \Memcached
+     * @var Clowdy\Cache\MemcachedManager
      */
     protected $memcachedManager;
 
     /**
      * Create a new Memcached store.
      *
-     * @param  \Clowdy\Cache\MemcachedManager  $memcachedManager
+     * @param  Clowdy\Cache\MemcachedManager  $memcachedManager
      * @param  string      $prefix
      * @return void
      */
