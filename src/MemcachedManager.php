@@ -48,8 +48,7 @@ class MemcachedManager
         $name = $this->parseConnectionName($name);
 
         // If we haven't created this connection, we'll create it based on the config
-        // provided in the application. Once we've created the connections we will
-        // set the "fetch mode" for PDO which determines the query return types.
+        // provided in the application.
         if ( ! isset($this->connections[$name]))
         {
             $connection = $this->makeConnection($name);
@@ -61,7 +60,7 @@ class MemcachedManager
     }
 
     /**
-     * Parse the connection into an array of the name and read / write type.
+     * Parse the connection.
      *
      * @param  string  $name
      * @return array
@@ -129,7 +128,7 @@ class MemcachedManager
     {
         $name = $name ?: $this->getDefaultConnection();
 
-        // To get the database connection configuration, we will just pull each of the
+        // To get the memcached connection configuration, we will just pull each of the
         // connection configurations and get the configurations for the given name.
         // If the configuration doesn't exist, we'll throw an exception and bail.
         $connections = $this->app['config']['cache.memcached'];
