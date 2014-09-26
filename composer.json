@@ -1,0 +1,26 @@
+{
+    "name": "clowdy/multi-memcached",
+    "description": "Multiple memcached connection handler for Laravel",
+    "keywords": ["laravel", "memcached", "cache"],
+    "authors": [
+        {
+            "name": "Pulkit Jalan",
+            "email": "pulkit@clowdy.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": ">=4.2"
+    },
+    "require-dev": {
+        "mockery/mockery": "~0.9",
+        "phpunit/phpunit": "4.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Clowdy\\Cache\\": "src/"
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
