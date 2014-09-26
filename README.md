@@ -36,21 +36,23 @@ Example:
 'memcached' => array(
     'default' => 'data1',
 
-    'data1' => array(
-        // cluster
-        array('host' => '127.0.0.1', 'port' => 11211, 'weight' => 100),
-        array('host' => '127.0.0.1', 'port' => 11212, 'weight' => 100)
-    ),
+    'connections' => array(
+        'data1' => array(
+            // cluster
+            array('host' => '127.0.0.1', 'port' => 11211, 'weight' => 100),
+            array('host' => '127.0.0.1', 'port' => 11212, 'weight' => 100)
+        ),
 
-    'data2' => array(
-        // single node
-        array('host' => '127.0.0.1', 'port' => 11213, 'weight' => 100),
-    ),
+        'data2' => array(
+            // single node
+            array('host' => '127.0.0.1', 'port' => 11213, 'weight' => 100),
+        ),
 
-    'data3' => array(
-        // single node
-        array('host' => '127.0.0.1', 'port' => 11214, 'weight' => 100),
-    ),
+        'data3' => array(
+            // single node
+            array('host' => '127.0.0.1', 'port' => 11214, 'weight' => 100),
+        )
+    )
 ),
 ```
 

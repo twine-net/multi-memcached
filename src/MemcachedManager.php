@@ -131,7 +131,7 @@ class MemcachedManager
         // To get the memcached connection configuration, we will just pull each of the
         // connection configurations and get the configurations for the given name.
         // If the configuration doesn't exist, we'll throw an exception and bail.
-        $connections = $this->app['config']['cache.memcached'];
+        $connections = $this->app['config']['cache.memcached.connections'];
 
         if (is_null($config = array_get($connections, $name)))
         {
