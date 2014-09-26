@@ -9,7 +9,7 @@ Next update the `app/config/cache.php` `memcached`. Example:
 
 ```php
 'memcached' => array(
-    'default' => 'session',
+    'default' => 'data1',
 
     'data1' => array(
         array('host' => '127.0.0.1', 'port' => 11211, 'weight' => 100),
