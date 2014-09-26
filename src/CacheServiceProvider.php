@@ -1,11 +1,11 @@
 <?php namespace Clowdy\Cache;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Cache\CacheServiceProvider as LaravelCacheServiceProvider;
+use Illuminate\Cache\CacheServiceProvider as IlluminateCacheServiceProvider;
+use Illuminate\Cache\MemcachedConnector as IlluminateMemcachedConnector;
 use Clowdy\Cache\CacheManager;
-use Illuminate\Cache\MemcachedConnector;
 
-class CacheServiceProvider extends LaravelCacheServiceProvider
+class CacheServiceProvider extends IlluminateCacheServiceProvider
 {
     /**
      * Register the service provider.
@@ -26,7 +26,7 @@ class CacheServiceProvider extends LaravelCacheServiceProvider
 
         $this->app->bindShared('memcached.connector', function()
         {
-            return new MemcachedConnector;
+            return new IlluminateMemcachedConnector;
         });
 
         $this->registerCommands();

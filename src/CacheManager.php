@@ -1,10 +1,10 @@
 <?php namespace Clowdy\Cache;
 
-use Illuminate\Cache\CacheManager as LaravelCacheManager;
+use Illuminate\Cache\CacheManager as IlluminateCacheManager;
 use Clowdy\Cache\MemcachedManager;
 use Clowdy\Cache\MemcachedStore;
 
-class CacheManager extends LaravelCacheManager
+class CacheManager extends IlluminateCacheManager
 {
     /**
      * Create an instance of the Memcached cache driver.

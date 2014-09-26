@@ -1,8 +1,8 @@
 <?php namespace Clowdy\Cache;
 
-use Illuminate\Cache\MemcachedStore as LaravelMemcachedStore;
+use Illuminate\Cache\MemcachedStore as IlluminateMemcachedStore;
 
-class MemcachedStore extends LaravelMemcachedStore
+class MemcachedStore extends IlluminateMemcachedStore
 {
     /**
      * The Memcached manager instance.
