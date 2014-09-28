@@ -28,7 +28,7 @@ Update `app/config/app.php` with the new service provider.
 
 ## Configuration
 
-The package makes use the the existing memcached configs in `app/config/cache.php`, however with a slightly modified structure.
+The package makes use the the existing memcached configs in `app/config/cache.php`, with a slightly modified structure.
 
 Example:
 ```php
@@ -86,13 +86,13 @@ class SomeClass
 
     public function update($data)
     {
-        $this->cache->put('key', $data);
+        $this->cache->put('key', $data, 60);
         $this->update2($data);
     }
 
     public function update2($data)
     {
-        $this->cache->connection('data2')->put('key', $data);
+        $this->cache->connection('data2')->put('key', $data, 60);
     }
 }
 ```
