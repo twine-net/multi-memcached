@@ -28,7 +28,7 @@ class MemcachedManager
     /**
      * Create a new memcached manager instance.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  \Illuminate\Foundation\Application $app
      * @return void
      */
     public function __construct($app, IlluminateMemcachedConnector $connector)
@@ -40,7 +40,7 @@ class MemcachedManager
     /**
      * Get a memcached instance based on connection.
      *
-     * @param  string  $name
+     * @param  string     $name
      * @return \Memcached
      */
     public function connection($name = null)
@@ -49,8 +49,7 @@ class MemcachedManager
 
         // If we haven't created this connection, we'll create it based on the config
         // provided in the application.
-        if ( ! isset($this->connections[$name]))
-        {
+        if (! isset($this->connections[$name])) {
             $connection = $this->makeConnection($name);
 
             $this->connections[$name] = $connection;
@@ -62,7 +61,7 @@ class MemcachedManager
     /**
      * Parse the connection.
      *
-     * @param  string  $name
+     * @param  string $name
      * @return array
      */
     protected function parseConnectionName($name)
@@ -106,7 +105,7 @@ class MemcachedManager
     /**
      * Make the memcached instance based on connection.
      *
-     * @param  string  $name
+     * @param  string     $name
      * @return \Memcached
      */
     protected function makeConnection($name)
@@ -119,7 +118,7 @@ class MemcachedManager
     /**
      * Get the configuration for a connection.
      *
-     * @param  string  $name
+     * @param  string $name
      * @return array
      *
      * @throws \InvalidArgumentException
@@ -133,8 +132,7 @@ class MemcachedManager
         // If the configuration doesn't exist, we'll throw an exception and bail.
         $connections = $this->app['config']['cache.memcached.connections'];
 
-        if (is_null($config = array_get($connections, $name)))
-        {
+        if (is_null($config = array_get($connections, $name))) {
             throw new \InvalidArgumentException("Memcached [$name] not configured.");
         }
 

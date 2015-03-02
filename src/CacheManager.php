@@ -1,8 +1,6 @@
 <?php namespace Clowdy\Cache;
 
 use Illuminate\Cache\CacheManager as IlluminateCacheManager;
-use Clowdy\Cache\MemcachedManager;
-use Clowdy\Cache\MemcachedStore;
 
 class CacheManager extends IlluminateCacheManager
 {

@@ -14,11 +14,11 @@ class MemcachedStore extends IlluminateMemcachedStore
     /**
      * Create a new Memcached store.
      *
-     * @param  Clowdy\Cache\MemcachedManager  $memcachedManager
-     * @param  string      $prefix
+     * @param  Clowdy\Cache\MemcachedManager $memcachedManager
+     * @param  string                        $prefix
      * @return void
      */
-    public function __construct($memcachedManager, $prefix = '')
+    public function __construct(MemcachedManager $memcachedManager, $prefix = '')
     {
         $this->memcachedManager = $memcachedManager;
 
