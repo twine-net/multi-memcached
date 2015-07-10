@@ -1,6 +1,6 @@
 {
     "name": "clowdy/multi-memcached",
-    "description": "Multiple memcached connection handler for Laravel",
+    "description": "Multiple memcached connection handler for Laravel and elasticache support",
     "keywords": ["laravel", "memcached", "cache"],
     "license": "MIT",
     "authors": [

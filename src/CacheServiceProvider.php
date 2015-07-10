@@ -3,7 +3,6 @@
 namespace Clowdy\Cache;
 
 use Illuminate\Cache\CacheServiceProvider as IlluminateCacheServiceProvider;
-use Illuminate\Cache\MemcachedConnector as IlluminateMemcachedConnector;
 
 class CacheServiceProvider extends IlluminateCacheServiceProvider
 {
@@ -21,7 +20,7 @@ class CacheServiceProvider extends IlluminateCacheServiceProvider
         });
 
         $this->app->bindShared('memcached.connector', function () {
-            return new IlluminateMemcachedConnector();
+            return new MemcachedConnector();
         });
 
         $this->registerCommands();

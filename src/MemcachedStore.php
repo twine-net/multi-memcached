@@ -37,4 +37,117 @@ class MemcachedStore extends IlluminateMemcachedStore
 
         return $this;
     }
+
+    /**
+     * Retrieve an item from the cache by key.
+     *
+     * @param mixed $key
+     *
+     * @return mixed
+     */
+    public function get($key)
+    {
+        if (is_array($key)) {
+            return $this->getMulti($key);
+        }
+
+        return parent::get($key);
+    }
+
+    /**
+     * Store an item in the cache for a given number of minutes.
+     *
+     * @param mixed $key
+     * @param mixed $value
+     * @param int   $minutes
+     */
+    public function put($key, $value, $minutes)
+    {
+        if (is_array($key)) {
+            $items = array_combine($key, $value);
+
+            return $this->putMulti($items, $minutes);
+        }
+
+        return parent::put($key, $value, $minutes);
+    }
+
+    /**
+     * Remove an item from the cache.
+     *
+     * @param mixed $key
+     */
+    public function forget($key)
+    {
+        if (is_array($key)) {
+            return $this->forgetMulti($key);
+        }
+
+        return parent::forget($key);
+    }
+
+    /**
+     * Retrieve an array of items from the cache by key.
+     *
+     * @param array $key
+     *
+     * @return array
+     */
+    public function getMulti(array $keys)
+    {
+        $values = $this->memcached->getMulti($this->prefixKeys($keys));
+
+        if ($this->memcached->getResultCode() == 0) {
+            return $values;
+        }
+    }
+
+    /**
+     * Store an array of items in the cache for a given number of minutes.
+     *
+     * @param array $items
+     * @param int   $minutes
+     */
+    public function putMulti(array $items, $minutes)
+    {
+        $this->memcached->setMulti($this->prefixKeys($items), $minutes * 60);
+    }
+
+    /**
+     * Store an array of items in the cache indefinitely.
+     *
+     * @param  array  $items
+     * @return void
+     */
+    public function foreverMulti(array $items)
+    {
+        return $this->putMulti($items, 0);
+    }
+
+    /**
+     * Remove an array of items from the cache.
+     *
+     * @param array $key
+     */
+    public function forgetMulti(array $keys)
+    {
+        $this->memcached->deleteMulti($this->prefixKeys($keys));
+    }
+
+    /**
+     * Prefix and array of keys with the cache prefix.
+     *
+     * @param array $key
+     *
+     * @return array
+     */
+    protected function prefixKeys(array $keys)
+    {
+        $result = [];
+        array_walk($keys, function ($value, $key) use (&$result) {
+            $result[$this->prefix.$key] = $value;
+        });
+
+        return $result;
+    }
 }

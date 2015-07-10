@@ -2,8 +2,6 @@
 
 namespace Clowdy\Cache;
 
-use Illuminate\Cache\MemcachedConnector as IlluminateMemcachedConnector;
-
 class MemcachedManager
 {
     /**
@@ -32,7 +30,7 @@ class MemcachedManager
      *
      * @param \Illuminate\Foundation\Application $app
      */
-    public function __construct($app, IlluminateMemcachedConnector $connector)
+    public function __construct($app, MemcachedConnector $connector)
     {
         $this->app = $app;
         $this->connector = $connector;
