@@ -1,4 +1,6 @@
-<?php namespace Clowdy\Cache;
+<?php
+
+namespace Clowdy\Cache;
 
 use Illuminate\Cache\CacheManager as IlluminateCacheManager;
 

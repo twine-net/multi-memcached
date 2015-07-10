@@ -1,4 +1,6 @@
-<?php namespace Clowdy\Cache;
+<?php
+
+namespace Clowdy\Cache;
 
 use Illuminate\Cache\CacheServiceProvider as IlluminateCacheServiceProvider;
 use Illuminate\Cache\MemcachedConnector as IlluminateMemcachedConnector;
@@ -7,8 +9,6 @@ class CacheServiceProvider extends IlluminateCacheServiceProvider
 {
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {

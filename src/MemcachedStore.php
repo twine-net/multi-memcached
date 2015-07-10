@@ -1,4 +1,6 @@
-<?php namespace Clowdy\Cache;
+<?php
+
+namespace Clowdy\Cache;
 
 use Illuminate\Cache\MemcachedStore as IlluminateMemcachedStore;
 
@@ -14,9 +16,8 @@ class MemcachedStore extends IlluminateMemcachedStore
     /**
      * Create a new Memcached store.
      *
-     * @param  Clowdy\Cache\MemcachedManager $memcachedManager
-     * @param  string                        $prefix
-     * @return void
+     * @param Clowdy\Cache\MemcachedManager $memcachedManager
+     * @param string                        $prefix
      */
     public function __construct(MemcachedManager $memcachedManager, $prefix = '')
     {

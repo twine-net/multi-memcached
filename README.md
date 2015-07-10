@@ -1,7 +1,7 @@
 Multiple Memcached Connections
 ===============
 
-Multiple memcached connection handler for Laravel cache.
+Multiple memcached connection handler for Laravel cache with elasticache support.
 
 ## Installation
 
