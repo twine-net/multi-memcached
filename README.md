@@ -1,7 +1,7 @@
 Multiple Memcached Connections
 ===============
 
-Multiple memcached connection handler for Laravel cache and elasticache support.
+Multiple memcached connection handler for Laravel cache and elasticache support. There is also support for `getMulti`, `putMulti`, `foreverMulti` and `forgetMulti` specifically for memcached.
 
 ## Installation
 
