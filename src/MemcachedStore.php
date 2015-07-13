@@ -90,12 +90,13 @@ class MemcachedStore extends IlluminateMemcachedStore
      * Retrieve an array of items from the cache by key.
      *
      * @param array $key
+     * @param array $tokens
      *
      * @return array
      */
-    public function getMulti(array $keys)
+    public function getMulti(array $keys, $tokens = null)
     {
-        $values = $this->memcached->getMulti($this->prefixKeys($keys));
+        $values = $this->memcached->getMulti($this->prefixKeys($keys), $tokens, \Memcached::GET_PRESERVE_ORDER);
 
         if ($this->memcached->getResultCode() == 0) {
             return $values;
