@@ -1,7 +1,7 @@
 Multiple Memcached Connections
 ===============
 
-Multiple memcached connection handler for Laravel cache and elasticache support. There is also support for `getMulti`, `putMulti`, `foreverMulti` and `forgetMulti` specifically for memcached.
+Multiple memcached connection handler for Laravel cache and elasticache support. There is also support for `getMulti`, `putMulti`, `foreverMulti` and `forgetMulti` specifically for memcached only.
 
 ## Installation
 
@@ -10,7 +10,7 @@ You can install the package using the [Composer](https://getcomposer.org/) packa
 ```json
 {
     "require": {
-        "clowdy/multi-memcached": "dev-master"
+        "clowdy/multi-memcached": "0.2.*"
     }
 }
 ```
@@ -37,20 +37,24 @@ Example:
     'default' => 'data1',
 
     'connections' => array(
+
+        // cluster
         'data1' => array(
-            // cluster
             array('host' => '127.0.0.1', 'port' => 11211, 'weight' => 100),
             array('host' => '127.0.0.1', 'port' => 11212, 'weight' => 100)
         ),
 
+        // single node
         'data2' => array(
-            // single node
             array('host' => '127.0.0.1', 'port' => 11213, 'weight' => 100),
         ),
 
+        // elasticache cluster
         'data3' => array(
-            // single node
-            array('host' => '127.0.0.1', 'port' => 11214, 'weight' => 100),
+            'elasticache' => true
+            'servers' => array(
+                array('host' => 'memcached.cache.amazonaws.com', 'port' => 11211, 'weight' => 100),
+            ),
         )
     )
 ),
@@ -66,6 +70,10 @@ Cache::connection('data1')->get('somekey');
 // or you can omit the connection method to use the default connection.
 
 Cache::get('somekey');
+
+// also perform a multi get using an array
+
+Cache::get(['key1', 'key2']);
 ```
 
 or
@@ -93,6 +101,16 @@ class SomeClass
     public function update2($data)
     {
         $this->cache->connection('data2')->put('key', $data, 60);
+        $this->update3(['key' => $data]);
+    }
+
+    public function update3(array $data)
+    {
+        $this->cache->connection('data3')->put(array_keys($data), array_values($data), 60);
+
+        // or
+        
+        $this->cache->connection('data3')->putMulti($data, 60);
     }
 }
 ```
