@@ -3,6 +3,8 @@ Multiple Memcached Connections
 
 Multiple memcached connection handler for Laravel cache and elasticache support. There is also support for `getMulti`, `putMulti`, `foreverMulti` and `forgetMulti` specifically for memcached only.
 
+__The cache driver can not be swapped if you make use of the additional `getMulti`, `putMulti`, `foreverMulti` or `forgetMulti` functions or the `get`, `put`, `forever`, `forget` with arrays. They are specific for memcached only!__
+
 ## Installation
 
 You can install the package using the [Composer](https://getcomposer.org/) package manager:
