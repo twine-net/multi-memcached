@@ -3,6 +3,7 @@
 namespace Clowdy\Cache;
 
 use Illuminate\Cache\MemcachedConnector as IlluminateMemcachedConnector;
+use RuntimeException;
 
 class MemcachedConnector extends IlluminateMemcachedConnector
 {
@@ -21,8 +22,8 @@ class MemcachedConnector extends IlluminateMemcachedConnector
 
         // Check and set Elasticache options here
         if (array_get($config, 'elasticache', false)) {
-            if (defined('\Memcached::OPT_CLIENT_MODE') && defined('\Memcached::DYNAMIC_CLIENT_MODE')) {
-                $memcached->setOption(\Memcached::OPT_CLIENT_MODE, \Memcached::DYNAMIC_CLIENT_MODE);
+            if (defined(get_class($memcached).'::OPT_CLIENT_MODE') && defined(get_class($memcached).'::DYNAMIC_CLIENT_MODE')) {
+                $memcached->setOption(constant(get_class($memcached).'::OPT_CLIENT_MODE'), constant(get_class($memcached).'::DYNAMIC_CLIENT_MODE'));
             }
         }
 
@@ -39,7 +40,7 @@ class MemcachedConnector extends IlluminateMemcachedConnector
         }
 
         if ($memcached->getVersion() === false) {
-            throw new \RuntimeException('Could not establish Memcached connection.');
+            throw new RuntimeException('Could not establish Memcached connection.');
         }
 
         return $memcached;
