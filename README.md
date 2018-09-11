@@ -30,7 +30,7 @@ Update `app/config/app.php` with the new service provider.
 
 ## Configuration
 
-The package makes use the the existing memcached configs in `app/config/cache.php`, with a slightly modified structure.
+The package makes use of the existing memcached configs in `app/config/cache.php`, with a slightly modified structure.
 
 Example:
 ```php
